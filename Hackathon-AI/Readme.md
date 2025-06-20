@@ -72,6 +72,8 @@ GET	/feedback_logs	Retrieve previous feedback by YouTube URL
 ├── main.py
 ├── requirements.txt
 └── .env
+
+
 🔐Environment Variables
 MONGO_URI="mongodb://localhost:27017"
 GOOGLE_API_KEY="your_google_api_key_here" 
@@ -94,8 +96,7 @@ Content-Type: application/json
 {
   "youtube_url": "https://www.youtube.com/watch?v=wJfjDyAmy7U"
 }
-🧠 Agent Workflow Overview
-agentsWorkflow drawio
+
 
 📚 Tech Stack
 1.Python 3.9+
