@@ -1,12 +1,86 @@
-# React + Vite
+:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🎥 Video Pitch Evaluation Portal – Frontend
+This is the React-based frontend for the Pitch Analysis AI Platform. It enables users to submit YouTube pitch videos and view AI-generated evaluations, feedback, and scoring in a visually intuitive dashboard.
 
-Currently, two official plugins are available:
+🌟 Live Demo
+🎬 Watch Demo Video
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🚀 Key Features
+📨 Video Submission: Submit YouTube video URLs for evaluation
 
-## Expanding the ESLint configuration
+📊 Evaluation Dashboard: View clarity, tone, structure, and content scores
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+📝 Feedback Modal: Get detailed AI-generated markdown feedback in a popup
+
+🧩 Modular Components: Built using reusable and maintainable components
+
+🎨 Tailwind CSS UI: Modern, responsive design with gradient background
+
+📁 Project Structure
+graphql
+Copy
+Edit
+pitch-evaluation-frontend/
+├── public/                     # Static files
+├── src/
+│   ├── api/
+│   │   └── api.js              # Axios config & API calls
+│   ├── components/
+│   │   ├── ui/                 # Reusable UI components
+│   │   │   ├── button.jsx
+│   │   │   ├── card.jsx
+│   │   │   ├── input.jsx
+│   │   │   └── tabs.jsx
+│   │   └── VideoDashboard.jsx  # Main dashboard
+│   ├── App.js                  # App entry point and routing
+│   ├── index.js                # React DOM render
+│   └── styles.css              # Tailwind and global styles
+├── postcss.config.js
+├── tailwind.config.js
+├── package.json
+└── README.md
+🛠️ Setup Instructions
+Clone the repository
+
+bash
+Copy
+Edit
+git clone https://github.com/yourusername/pitch-evaluation-frontend.git
+cd pitch-evaluation-frontend
+Install dependencies
+
+bash
+Copy
+Edit
+npm install
+Start the development server
+
+bash
+Copy
+Edit
+npm start
+⚠️ Ensure the backend server is running on http://localhost:8000
+
+📦 Core Dependencies
+react
+
+axios
+
+react-markdown
+
+tailwindcss
+
+postcss
+
+autoprefixer
+
+📬 API Communication
+The frontend communicates with the backend via these endpoints:
+
+POST /analyze – Submit video for evaluation
+
+GET /evaluations – Fetch all past evaluations
+
+GET /feedback_logs – Retrieve feedback for a specific video
+
