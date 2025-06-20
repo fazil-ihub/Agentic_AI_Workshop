@@ -125,7 +125,7 @@ Content-Type: application/json
 ```
 ## Architecture Flow Diagram
 
-https://drive.google.com/drive/folders/1k2FbRmJEqxEb5rmny0jA-RisuOBsKTK4
+[https://drive.google.com/drive/folders/1k2FbRmJEqxEb5rmny0jA-RisuOBsKTK4](https://drive.google.com/file/d/11Va-EPVXwAXXE4B8zRNoJePLF0n41RPO/view?usp=sharing)
 ---
 
 ## 🧰 Tech Stack
