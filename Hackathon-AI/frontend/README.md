@@ -6,6 +6,8 @@ A video demonstration showcasing the full application (frontend + backend) can b
 
 🎬 Watch Project Demo Video
 
+https://drive.google.com/drive/folders/1k2FbRmJEqxEb5rmny0jA-RisuOBsKTK4
+
 🚀 Key Features
 ✨ Modern & Professional UI: Built with a sleek, dark theme using Tailwind CSS, featuring "glassmorphism" effects and smooth animations for a premium user experience.
 
