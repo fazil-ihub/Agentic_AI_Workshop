@@ -20,7 +20,7 @@ chromadb
 # Media & Transcription
 yt-dlp
 # Pinning whisper version for better stability on Windows
-git+https://github.com/openai/whisper.git
+# git+https://github.com/openai/whisper.git
 pydub
 
 # Other
