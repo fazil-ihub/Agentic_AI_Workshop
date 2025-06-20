@@ -123,7 +123,9 @@ Content-Type: application/json
   "youtube_url": "https://www.youtube.com/watch?v=wJfjDyAmy7U"
 }
 ```
+## Architecture Flow Diagram
 
+https://drive.google.com/drive/folders/1k2FbRmJEqxEb5rmny0jA-RisuOBsKTK4
 ---
 
 ## 🧰 Tech Stack
