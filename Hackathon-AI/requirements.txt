@@ -1,0 +1,28 @@
+
+faiss-cpu>=1.7.4
+librosa>=0.10.1
+motor
+fastapi
+uvicorn[standard]
+python-multipart
+fastapi-cors
+
+# Core AI Libraries
+langgraph
+langchain
+langchain-google-genai
+langchain-community
+pydantic<2
+
+# RAG Vector Store (replaces faiss-cpu to avoid compilation errors)
+chromadb
+
+# Media & Transcription
+yt-dlp
+# Pinning whisper version for better stability on Windows
+git+https://github.com/openai/whisper.git
+pydub
+
+# Other
+python-dotenv
+numpy
