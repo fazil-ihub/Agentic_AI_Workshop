@@ -1,11 +1,13 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, FastAPI
 from fastapi.encoders import jsonable_encoder
 from app.models import VideoInput, EvaluationResult
 from app.crud import save_evaluation, get_evaluations,save_feedback_log,get_feedback_logs
 from core.runner import run_pitch_analysis
 from bson import ObjectId
+from fastapi.middleware.cors import CORSMiddleware
 
 router = APIRouter()
+
 
 @router.post("/analyze", response_model=EvaluationResult)
 async def analyze_pitch(video: VideoInput):
