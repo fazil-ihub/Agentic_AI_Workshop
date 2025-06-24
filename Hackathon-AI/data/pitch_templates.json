@@ -1,10 +1,42 @@
 [
   {
-    "title": "Effective Pitch Structure",
-    "content": "An ideal pitch contains: Introduction, Problem Statement, Proposed Solution, Value Proposition, Market Opportunity, Business Model, Call to Action."
+    "title": "Vision-Oriented Pitch",
+    "content": "Start with your vision, describe the change you want to see, explain how your product makes it happen, show who benefits, and end with how you’ll grow."
   },
   {
-    "title": "Startup Pitch Best Practices",
-    "content": "Be clear and concise. Focus on the problem, how your solution helps, and what you want from the audience (investment, support, etc)."
+    "title": "Problem-Solution-Impact Format",
+    "content": "Define the problem → Show your unique solution → Explain the real-world impact → Share key metrics or proof points → Ask for support/funding."
+  },
+  {
+    "title": "Hero's Journey Pitch",
+    "content": "Introduce the customer as the hero → Present the problem as a villain → Show your solution as a guide → Highlight the transformation → Invite to join the mission."
+  },
+  {
+    "title": "Elevator Pitch Template",
+    "content": "For [target audience] who [pain point], our [product/service] offers [key benefit]. Unlike [competitor], we [unique differentiator]."
+  },
+  {
+    "title": "Scientific Pitch Structure",
+    "content": "Background → Hypothesis (what you believed) → Experiment (what you built) → Results (impact so far) → Conclusion (why it works)."
+  },
+  {
+    "title": "Problem-Market-Solution-Traction",
+    "content": "What’s broken → How big the market is → How you’re solving it → Proof that it’s working (revenue, users, partners)."
+  },
+  {
+    "title": "Pitch as a Story Arc",
+    "content": "Set the scene → Introduce conflict (problem) → Present your hero (solution) → Show journey/results → End with a hopeful future (your ask)."
+  },
+  {
+    "title": "Reverse Pyramid Pitch",
+    "content": "Start with the punchline (what your startup does best) → Drill into the problem → Unfold how you solve it → Back it with data → Conclude with next steps."
+  },
+  {
+    "title": "Lean Startup Pitch",
+    "content": "Customer segment → Problem → Solution → Unique Value Proposition → Channels → Revenue streams → Ask."
+  },
+  {
+    "title": "Investor-Focused Pitch",
+    "content": "Big problem → Scalable solution → Market potential → Business model → Team credentials → Financial forecast → Investment needs."
   }
 ]
