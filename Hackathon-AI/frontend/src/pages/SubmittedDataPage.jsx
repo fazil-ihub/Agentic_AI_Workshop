@@ -1,5 +1,4 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Header } from "../components/common/Header.jsx";
 import Footer from "../components/layout/Footer.jsx";
 import {
@@ -10,46 +9,54 @@ import {
   CardContent,
 } from "../components/ui/Card.jsx";
 
-const staticSubmissions = [
-  {
-    id: 1,
-    title: "Startup Pitch: EcoClean",
-    youtubeUrl: "https://www.youtube.com/watch?v=eco123",
-    transcript:
-      "Welcome everyone, today I'm going to present EcoClean, a sustainable solution to water pollution...",
-    overall_score: 82,
-    scores: {
-      clarity: 85,
-      confidence: 78,
-      body_language: 80,
-      vocal_delivery: 84,
-    },
-    feedback:
-      "Great energy and structure. Improve pauses and eye contact to engage your audience better.",
-  },
-  {
-    id: 2,
-    title: "AI in Education",
-    youtubeUrl: "https://www.youtube.com/watch?v=ai456",
-    transcript:
-      "Artificial intelligence is revolutionizing how we personalize education. In this talk...",
-    overall_score: 90,
-    scores: {
-      clarity: 93,
-      confidence: 87,
-      body_language: 89,
-      vocal_delivery: 91,
-    },
-    feedback: "Excellent delivery with strong confidence and clarity. Keep it up!",
-  },
-];
-
 const SubmittedDataPage = () => {
   const [submissions, setSubmissions] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Simulate fetching from backend
-    setSubmissions(staticSubmissions);
+    const fetchSubmissions = async () => {
+      try {
+        const evalResponse = await fetch("http://localhost:8000/evaluations");
+        if (!evalResponse.ok) throw new Error("Failed to fetch evaluations");
+
+        const evalData = await evalResponse.json();
+
+        // Fetch feedback logs in parallel
+        const enriched = await Promise.all(
+          evalData.map(async (item) => {
+            try {
+              const feedbackRes = await fetch(
+                `http://localhost:8000/feedback_logs?youtube_url=${encodeURIComponent(item.youtube_url)}`
+              );
+              const feedbackData = feedbackRes.ok
+                ? await feedbackRes.json()
+                : null;
+
+              return {
+                ...item,
+                title: item?.metadata?.title || "Untitled Video",
+                transcript: item?.report?.substring(0, 300) + "...", // you can change this
+                feedback: item?.report || "No feedback available",
+                feedback_log: feedbackData,
+              };
+            } catch (innerErr) {
+              console.error("Error fetching feedback log:", innerErr);
+              return item;
+            }
+          })
+        );
+
+        setSubmissions(enriched);
+      } catch (err) {
+        console.error("Error fetching submissions:", err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchSubmissions();
   }, []);
 
   return (
@@ -63,64 +70,76 @@ const SubmittedDataPage = () => {
             <CardDescription>Recent analysis results</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
-            {submissions.map((submission) => (
-              <div
-                key={submission.id}
-                className="border border-slate-800 rounded-lg p-5 bg-slate-900/50"
-              >
-                <h3 className="text-lg font-semibold text-blue-300">
-                  <a
-                    href={submission.youtubeUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:underline"
-                  >
-                    {submission.title}
-                  </a>
-                </h3>
-                <p className="text-slate-400 text-sm mt-1 mb-2">
-                  YouTube URL: {submission.youtubeUrl}
-                </p>
+            {loading && <p className="text-slate-400">Loading...</p>}
+            {error && <p className="text-red-400">Error: {error}</p>}
 
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <p className="text-slate-300 font-semibold mb-1">
-                      Transcript Preview
-                    </p>
-                    <p className="text-slate-400 text-sm bg-slate-800/50 p-3 rounded">
-                      {submission.transcript}
-                    </p>
-                  </div>
-
-                  <div>
-                    <p className="text-slate-300 font-semibold mb-1">
-                      Evaluation Scores
-                    </p>
-                    <ul className="text-sm text-slate-300 space-y-1">
-                      <li>
-                        <span className="text-slate-400">Overall Score:</span>{" "}
-                        <strong>{submission.overall_score}/100</strong>
-                      </li>
-                      {Object.entries(submission.scores).map(([key, value]) => (
-                        <li key={key}>
-                          <span className="capitalize text-slate-400">
-                            {key.replace(/_/g, " ")}:
-                          </span>{" "}
-                          {value}/100
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="mt-4">
-                  <p className="text-slate-300 font-semibold mb-1">Feedback</p>
-                  <p className="text-slate-400 bg-slate-800/50 p-3 rounded text-sm">
-                    {submission.feedback}
+            {!loading &&
+              !error &&
+              submissions.map((submission, idx) => (
+                <div
+                  key={idx}
+                  className="border border-slate-800 rounded-lg p-5 bg-slate-900/50"
+                >
+                  <h3 className="text-lg font-semibold text-blue-300">
+                    <a
+                      href={submission.youtube_url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hover:underline"
+                    >
+                      {submission.title}
+                    </a>
+                  </h3>
+                  <p className="text-white text-sm mt-1 mb-2">
+                    YouTube URL: {submission.youtube_url}
                   </p>
+
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <p className="text-lg font-semibold text-blue-300">
+                        Transcript Preview
+                      </p>
+                      <p className="text-white text-sm bg-slate-800/50 p-3 rounded">
+                        {submission.transcript || "Transcript not available"}
+                      </p>
+                    </div>
+
+                    <div>
+                      <p className="text-lg font-semibold text-blue-300">
+                        Evaluation Scores
+                      </p>
+                      <ul className="text-white">
+                        <li>
+                          <span className="text-white">
+                            Overall Score:
+                          </span>{" "}
+                          <strong>{submission.overall_score}/100</strong>
+                        </li>
+                        {submission.scores &&
+                          Object.entries(submission.scores).map(
+                            ([key, value]) => (
+                              <li key={key}>
+                                <span className="capitalize text-white">
+                                  {key.replace(/_/g, " ")}:
+                                </span>{" "}
+                                {value}/100
+                              </li>
+                            )
+                          )}
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="mt-4">
+                    <p className="text-lg font-semibold text-blue-300">
+                      Feedback / Report
+                    </p>
+                    <p className="text-white bg-slate-800/50 p-3 rounded text-sm whitespace-pre-wrap">
+                      {submission.feedback}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </CardContent>
         </Card>
       </div>
