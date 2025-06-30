@@ -11,11 +11,11 @@ const AboutPage = () => {
 
         <Card className="max-w-4xl mx-auto fade-in-up">
           <CardHeader>
-            <CardTitle>About Agentic Pitch Evaluator</CardTitle>
+            <CardTitle className="text-black">About Agentic Pitch Evaluator</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-6 text-slate-300 leading-relaxed">
+          <CardContent className="space-y-6 text-black leading-relaxed">
             <p>
-              <strong className="text-white">Agentic Pitch Evaluator</strong> is an AI-powered tool built to help students, educators, and professionals assess and improve their presentation skills using YouTube videos.
+              <strong className="text-black">Agentic Pitch Evaluator</strong> is an AI-powered tool built to help students, educators, and professionals assess and improve their presentation skills using YouTube videos.
             </p>
             <p>
               By leveraging a stack of language agents, audio analysis, and scoring models, this platform breaks down your delivery into measurable skills like clarity, vocal variety, engagement, and body language.
@@ -23,10 +23,10 @@ const AboutPage = () => {
             <p>
               Our AI agents evaluate your video and return a detailed report along with a transcript — helping you recognize what works and what doesn't in your pitch.
             </p>
-            <p>
+            {/* <p>
               This tool is built using modern web technologies like <strong>React + Vite + Tailwind CSS</strong> on the frontend, and <strong>FastAPI</strong>, <strong>LangChain</strong>, and whisper-based transcription on the backend.
-            </p>
-            <p className="italic text-slate-400">
+            </p> */}
+            <p className="italic text-slate-700">
               Whether you're preparing for a pitch competition, a classroom presentation, or a business proposal — Agentic Evaluator gives you the feedback you need to grow.
             </p>
           </CardContent>

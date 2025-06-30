@@ -40,7 +40,7 @@ const EntryPage = () => {
         <Header />
 
         {/* Introductory Info */}
-        <section className="text-center text-slate-300 mb-12 max-w-2xl mx-auto fade-in-up">
+        <section className="text-center text-slate-800 mb-12 max-w-2xl mx-auto fade-in-up">
           <p className="text-lg">
             Welcome to the <span className="text-blue-400 font-semibold">Agentic Pitch Evaluator</span> — an AI-powered platform to assess your presentation skills.
             <br />

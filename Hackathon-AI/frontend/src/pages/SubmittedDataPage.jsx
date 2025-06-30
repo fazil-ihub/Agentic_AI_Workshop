@@ -97,15 +97,6 @@ const SubmittedDataPage = () => {
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <p className="text-lg font-semibold text-blue-300">
-                        Transcript Preview
-                      </p>
-                      <p className="text-white text-sm bg-slate-800/50 p-3 rounded">
-                        {submission.transcript || "Transcript not available"}
-                      </p>
-                    </div>
-
-                    <div>
-                      <p className="text-lg font-semibold text-blue-300">
                         Evaluation Scores
                       </p>
                       <ul className="text-white">
@@ -134,9 +125,14 @@ const SubmittedDataPage = () => {
                     <p className="text-lg font-semibold text-blue-300">
                       Feedback / Report
                     </p>
-                    <p className="text-white bg-slate-800/50 p-3 rounded text-sm whitespace-pre-wrap">
-                      {submission.feedback}
-                    </p>
+                    <div className="text-white bg-slate-800/50 p-3 rounded text-sm whitespace-pre-wrap space-y-3">
+  {submission.feedback
+    .split(/\n\s*\n/) 
+    .map((para, index) => (
+      <p key={index} className="mb-2">{para.replace(/\*\*/g, "").trim()}</p> 
+    ))}
+</div>
+
                   </div>
                 </div>
               ))}
