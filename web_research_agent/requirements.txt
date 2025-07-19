@@ -1,3 +1,0 @@
-openai
-tavily-search
-python-dotenv
