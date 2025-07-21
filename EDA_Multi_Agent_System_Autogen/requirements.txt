@@ -1,0 +1,9 @@
+pyautogen
+pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
+notebook 
+pydantic
+vertexai 
